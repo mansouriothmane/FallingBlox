@@ -7,25 +7,18 @@ import fr.eseo.e3.poo.projet.blox.modele.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OPiece {
-    private List<Element> elements;
+public class OPiece extends Piece{
+
 
     public OPiece(Coordonnees coordonnees, Couleur couleur) {
-        this.elements = new ArrayList<>();
-        //TODO
+        super(coordonnees, couleur);
     }
 
-    protected void setElements(Coordonnees coordonnees, Couleur couleur) {
-        //TODO
-    }
-
-    public List<Element> getElements() {
-        return elements;
-    }
-
-    @Override
-    public String toString() {
-        //TODO
-        return "";
+    public void setElements(Coordonnees coordonnees, Couleur couleur) {
+        this.getElements().add(new Element(coordonnees, couleur));
+        this.getElements().add(new Element(coordonnees.getAbscisse(),coordonnees.getOrdonnee() - 1, couleur));
+        this.getElements().add(new Element(coordonnees.getAbscisse() + 1,coordonnees.getOrdonnee(), couleur));
+        this.getElements().add(new Element(coordonnees.getAbscisse() + 1,coordonnees.getOrdonnee() - 1, couleur));
+        //TODO : Gérer les exceptions
     }
 }
