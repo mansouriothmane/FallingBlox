@@ -11,7 +11,7 @@ public class OPiece extends Piece{
         super(coordonnees, couleur);
     }
 
-    public void setElements(Coordonnees coordonnees, Couleur couleur) {
+    protected void setElements(Coordonnees coordonnees, Couleur couleur) {
         this.getElements().add(new Element(coordonnees, couleur));
         this.getElements().add(new Element(coordonnees.getAbscisse(),coordonnees.getOrdonnee() + 1, couleur));
         this.getElements().add(new Element(coordonnees.getAbscisse() + 1,coordonnees.getOrdonnee(), couleur));

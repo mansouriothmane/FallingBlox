@@ -3,20 +3,20 @@ package fr.eseo.e3.poo.projet.blox.modele;
 import fr.eseo.e3.poo.projet.blox.modele.pieces.Piece;
 
 public class Puits {
-    public int LARGEUR_PAR_DEFAUT = 10;
-    public int PROFONDEUR_PAR_DEFAUT = 15;
+    public int LARGEUR_PAR_DEFAUT = 400;
+    public int PROFONDEUR_PAR_DEFAUT = 400;
     private int largeur;
     private int profondeur;
 
     private Piece pieceActuelle;
     private Piece pieceSuivante;
 
-    Puits() {
+    public Puits() {
         this.largeur = LARGEUR_PAR_DEFAUT;
         this.profondeur = PROFONDEUR_PAR_DEFAUT;
     }
 
-    Puits(int largeur, int profondeur) {
+    public Puits(int largeur, int profondeur) {
         this.largeur = largeur;
         this.profondeur = profondeur;
     }
