@@ -3,6 +3,7 @@ package fr.eseo.e3.poo.projet.blox.modele.pieces;
 import fr.eseo.e3.poo.projet.blox.modele.Coordonnees;
 import fr.eseo.e3.poo.projet.blox.modele.Couleur;
 import fr.eseo.e3.poo.projet.blox.modele.Element;
+import fr.eseo.e3.poo.projet.blox.modele.Puits;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,22 +11,23 @@ import java.util.List;
 public abstract class Piece {
 
     private List<Element> elements;
-    public List<Element> getElements() {
-        return elements;
-    }
+    private Puits puits;
 
     public Piece(Coordonnees coordonnees, Couleur couleur){
         this.elements = new ArrayList<>();
         this.setElements(coordonnees, couleur);
     }
 
+    public List<Element> getElements() {
+        return elements;
+    }
 
-    abstract public void setElements(Coordonnees coordonnees, Couleur couleur);
+    abstract protected void setElements(Coordonnees coordonnees, Couleur couleur);
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder(this.getClass().getName() + " :\n");
+        StringBuilder str = new StringBuilder(this.getClass().getSimpleName() + " :\n");
         for(Element e : this.elements){
-            str.append("    ").append(e.toString()).append("\n");
+            str.append("\t").append(e.toString()).append("\n");
         }
         return str.toString();
     }
@@ -35,5 +37,13 @@ public abstract class Piece {
         this.elements.clear();
         Coordonnees coordonnees = new Coordonnees(abscisse, ordonnee);
         this.setElements(coordonnees ,couleur);
+    }
+
+    public Puits getPuits() {
+        return puits;
+    }
+
+    public void setPuits(Puits puits) {
+        this.puits = puits;
     }
 }
