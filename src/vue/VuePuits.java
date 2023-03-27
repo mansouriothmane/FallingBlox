@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class VuePuits extends JPanel {
-    public static final int TAILLE_PAR_DEFAUT = 10;
+    public static final int TAILLE_PAR_DEFAUT = 20;
     private Puits puits;
     private int taille;
 
@@ -21,7 +21,7 @@ public class VuePuits extends JPanel {
         this.puits = puits;
         this.taille = taille;
         setPreferredSize(new Dimension(400, 400));
-        setBackground(Color.WHITE);
+        //setBackground(Color.WHITE);
     }
 
     public Puits getPuits() {
@@ -46,7 +46,7 @@ public class VuePuits extends JPanel {
         g2D.setColor(Color.LIGHT_GRAY);
         for (int x = 0; x < getWidth(); x += taille) {
             for (int y = 0; y < getHeight(); y += taille) {
-                g2D.fillRect(x, y, taille, taille);
+                g2D.drawRect(x, y, taille, taille);
             }
         }
         g2D.dispose();

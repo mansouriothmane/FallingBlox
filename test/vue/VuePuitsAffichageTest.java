@@ -1,9 +1,10 @@
 package fr.eseo.e3.poo.projet.blox.vue;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 import fr.eseo.e3.poo.projet.blox.modele.Puits;
+
+import java.awt.*;
 
 public class VuePuitsAffichageTest {
 
@@ -21,7 +22,7 @@ public class VuePuitsAffichageTest {
 
                 // Créer une JFrame avec la vuePuits
                 JFrame frame = new JFrame("Puits");
-                frame.getContentPane().add(vuePuits);
+                frame.add(vuePuits);
 
                 // Définir la taille de la fenêtre en fonction de la vuePuits
                 frame.pack();
@@ -31,6 +32,7 @@ public class VuePuitsAffichageTest {
 
                 // Fermer l'application quand la fenêtre est fermée
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
     }
 
     private void testConstructeurPuitsTaille() {
@@ -38,11 +40,11 @@ public class VuePuitsAffichageTest {
                 Puits puits = new Puits();
 
                 // Créer une instance de VuePuits avec le puits et une taille de 100
-                VuePuits vuePuits = new VuePuits(puits, 100);
+                VuePuits vuePuits = new VuePuits(puits, 20);
 
                 // Créer une JFrame avec la vuePuits
                 JFrame frame = new JFrame("Puits et taille");
-                frame.getContentPane().add(vuePuits);
+                frame.add(vuePuits);
 
                 // Définir la taille de la fenêtre en fonction de la vuePuits
                 frame.pack();
@@ -52,6 +54,7 @@ public class VuePuitsAffichageTest {
 
                 // Fermer l'application quand la fenêtre est fermée
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
     }
 
     public static void main (String [] args) {
