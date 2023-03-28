@@ -18,4 +18,9 @@ public class OPiece extends Piece{
         this.getElements().add(new Element(coordonnees.getAbscisse() + 1,coordonnees.getOrdonnee() + 1, couleur));
         //TODO : Gérer les exceptions
     }
+
+    @Override
+    public Piece tourner(boolean sensHoraire) {
+        return this;
+    }
 }

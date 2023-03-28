@@ -24,16 +24,24 @@ public abstract class Piece {
 
     abstract protected void setElements(Coordonnees coordonnees, Couleur couleur);
 
-    public void deplacerDe(int deltaX, int deltaY) {
+    public Piece deplacerDe(int deltaX, int deltaY) {
         //TODO : Cas supérieur à 1
         if (deltaY < 0) throw new IllegalStateException("Unexpected value: " + deltaY);
         for(Element e : this.elements) {
             e.deplacerDe(deltaX, deltaY);
         }
+        return this;
     }
 
-    public void tourner(boolean sensHoraire) {
-
+    public Piece tourner(boolean sensHoraire) {
+        int dx = elements.get(0).getCoordonnees().getAbscisse();
+        int dy = elements.get(0).getCoordonnees().getOrdonnee();
+        for(Element e : elements) {
+            e.deplacerDe(-dx, -dy);
+            e.tourner(sensHoraire);
+            e.deplacerDe(dx, dy);
+        }
+        return this;
     }
 
     @Override

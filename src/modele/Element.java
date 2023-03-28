@@ -48,13 +48,11 @@ public class Element {
     }
 
     public void tourner(boolean sensHoraire) {
-        //TODO: finir
-        deplacerDe(-coordonnees.getAbscisse(), -coordonnees.getOrdonnee());
-        int x = coordonnees.getAbscisse();
-        int y = coordonnees.getOrdonnee();
-        coordonnees.setAbscisse((int) Math.sqrt(x*x + y*y));
-        coordonnees.setOrdonnee(0);
-        deplacerDe(coordonnees.getAbscisse(), coordonnees.getOrdonnee());
+        int signe = sensHoraire ? 1 : -1;
+        int ordonnee = coordonnees.getOrdonnee();
+        int abscisse = getCoordonnees().getAbscisse();
+        coordonnees.setAbscisse(signe * ordonnee);
+        coordonnees.setOrdonnee(-signe * abscisse);
     }
 
     @Override
