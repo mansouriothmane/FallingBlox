@@ -35,17 +35,14 @@ public class VuePiece {
     public void afficherPiece(Graphics2D g2D) {
         List<Element> elements = piece.getElements();
 
-
         g2D.setColor(teinte(elements.get(0).getCouleur().getCouleurPourAffichage()));
         g2D.fill3DRect(elements.get(0).getCoordonnees().getAbscisse() * taille,
                 elements.get(0).getCoordonnees().getOrdonnee() * taille, taille, taille, true);
-        System.out.println(elements.get(0).getCoordonnees());
 
         g2D.setColor(elements.get(0).getCouleur().getCouleurPourAffichage());
         for (int i = 1; i < elements.size(); i++) {
             g2D.fill3DRect(elements.get(i).getCoordonnees().getAbscisse() * taille,
                     elements.get(i).getCoordonnees().getOrdonnee() * taille, taille, taille ,true);
-        System.out.println(elements.get(i).getCoordonnees());
         }
     }
 }

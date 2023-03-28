@@ -21,11 +21,8 @@ public class VuePuitsAffichageTest {
 
                 // Créer une instance de VuePuits avec le puits
                 VuePuits vuePuits = new VuePuits(puits);
-
-                Piece piece = UsineDePiece.genererPiece();
-                puits.setPieceSuivante(piece);
-                VuePiece vuePiece = new VuePiece(piece);
-                vuePuits.setVuePiece(vuePiece);
+                puits.setPieceSuivante(UsineDePiece.genererPiece());
+                puits.setPieceSuivante(UsineDePiece.genererPiece());
 
                 // Créer une JFrame avec la vuePuits
                 JFrame frame = new JFrame("Puits");
@@ -48,11 +45,8 @@ public class VuePuitsAffichageTest {
 
                 // Créer une instance de VuePuits avec le puits et une taille de 100
                 VuePuits vuePuits = new VuePuits(puits, 20);
-
-                Piece piece = UsineDePiece.genererPiece();
-                puits.setPieceSuivante(piece);
-                VuePiece vuePiece = new VuePiece(piece);
-                vuePuits.setVuePiece(vuePiece);
+                puits.setPieceSuivante(UsineDePiece.genererPiece());
+                puits.setPieceSuivante(UsineDePiece.genererPiece());
 
                 // Créer une JFrame avec la vuePuits
                 JFrame frame = new JFrame("Puits et taille");
