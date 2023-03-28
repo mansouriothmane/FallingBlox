@@ -3,6 +3,8 @@ package fr.eseo.e3.poo.projet.blox.vue;
 import javax.swing.*;
 
 import fr.eseo.e3.poo.projet.blox.modele.Puits;
+import fr.eseo.e3.poo.projet.blox.modele.UsineDePiece;
+import fr.eseo.e3.poo.projet.blox.modele.pieces.Piece;
 
 import java.awt.*;
 
@@ -19,6 +21,11 @@ public class VuePuitsAffichageTest {
 
                 // Créer une instance de VuePuits avec le puits
                 VuePuits vuePuits = new VuePuits(puits);
+
+                Piece piece = UsineDePiece.genererPiece();
+                puits.setPieceSuivante(piece);
+                VuePiece vuePiece = new VuePiece(piece);
+                vuePuits.setVuePiece(vuePiece);
 
                 // Créer une JFrame avec la vuePuits
                 JFrame frame = new JFrame("Puits");
@@ -41,6 +48,11 @@ public class VuePuitsAffichageTest {
 
                 // Créer une instance de VuePuits avec le puits et une taille de 100
                 VuePuits vuePuits = new VuePuits(puits, 20);
+
+                Piece piece = UsineDePiece.genererPiece();
+                puits.setPieceSuivante(piece);
+                VuePiece vuePiece = new VuePiece(piece);
+                vuePuits.setVuePiece(vuePiece);
 
                 // Créer une JFrame avec la vuePuits
                 JFrame frame = new JFrame("Puits et taille");

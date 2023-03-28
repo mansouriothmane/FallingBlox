@@ -9,6 +9,7 @@ public class VuePuits extends JPanel {
     public static final int TAILLE_PAR_DEFAUT = 20;
     private Puits puits;
     private int taille;
+    private VuePiece vuePiece;
 
     public VuePuits(Puits puits) {
         this.puits = puits;
@@ -21,7 +22,7 @@ public class VuePuits extends JPanel {
         this.puits = puits;
         this.taille = taille;
         setPreferredSize(new Dimension(400, 400));
-        //setBackground(Color.WHITE);
+        setBackground(Color.WHITE);
     }
 
     public Puits getPuits() {
@@ -32,12 +33,20 @@ public class VuePuits extends JPanel {
         return taille;
     }
 
+    public VuePiece getVuePiece() {
+        return vuePiece;
+    }
+
     public void setPuits(Puits puits) {
         this.puits = puits;
     }
 
     public void setTaille(int taille) {
         this.taille = taille;
+    }
+
+    public void setVuePiece(VuePiece vuePiece) {
+        this.vuePiece = vuePiece;
     }
 
     protected void paintComponent(Graphics g) {
@@ -49,6 +58,7 @@ public class VuePuits extends JPanel {
                 g2D.drawRect(x, y, taille, taille);
             }
         }
+        vuePiece.afficherPiece(g2D);
         g2D.dispose();
     }
 }

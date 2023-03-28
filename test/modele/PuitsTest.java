@@ -3,7 +3,7 @@ package fr.eseo.e3.poo.projet.blox.modele;
 import fr.eseo.e3.poo.projet.blox.modele.pieces.IPiece;
 import fr.eseo.e3.poo.projet.blox.modele.pieces.OPiece;
 import fr.eseo.e3.poo.projet.blox.modele.pieces.Piece;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class PuitsTest {
@@ -24,7 +24,7 @@ public class PuitsTest {
         Puits puits = new Puits(10, 10);
 
         puits.setPieceSuivante(piece1);
-        Assertions.assertEquals("""
+        assertEquals("""
                         Puits : Dimension 10 x 10
                         Piece Actuelle : <aucune>
                         Piece Suivante : IPiece :
@@ -35,7 +35,7 @@ public class PuitsTest {
                         """, puits.toString());
 
         puits.setPieceSuivante(piece2);
-        Assertions.assertEquals("""
+        assertEquals("""
                         Puits : Dimension 10 x 10
                         Piece Actuelle : IPiece :
                         \t(5, -4) - VERT

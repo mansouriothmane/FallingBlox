@@ -1,6 +1,6 @@
 package fr.eseo.e3.poo.projet.blox.modele;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class ElementTest {
@@ -11,16 +11,16 @@ public class ElementTest {
         Element el;
 
         el = new Element(coord, Couleur.ROUGE);
-        Assertions.assertEquals(coord, el.getCoordonnees());
+        assertEquals(coord, el.getCoordonnees());
 
         el = new Element(3, 4, Couleur.ROUGE);
-        Assertions.assertEquals(coord, el.getCoordonnees());
+        assertEquals(coord, el.getCoordonnees());
 
         el = new Element(coord);
-        Assertions.assertEquals(coord, el.getCoordonnees());
+        assertEquals(coord, el.getCoordonnees());
 
         el = new Element(3, 4);
-        Assertions.assertEquals(coord, el.getCoordonnees());
+        assertEquals(coord, el.getCoordonnees());
     }
 
     @Test
@@ -29,16 +29,16 @@ public class ElementTest {
         Element el;
 
         el = new Element(coord, Couleur.BLEU);
-        Assertions.assertEquals(Couleur.BLEU, el.getCouleur());
+        assertEquals(Couleur.BLEU, el.getCouleur());
 
         el = new Element(3, 4, Couleur.VERT);
-        Assertions.assertEquals(Couleur.VERT, el.getCouleur());
+        assertEquals(Couleur.VERT, el.getCouleur());
 
         el = new Element(coord);
-        Assertions.assertEquals(Couleur.ROUGE, el.getCouleur());
+        assertEquals(Couleur.ROUGE, el.getCouleur());
 
         el = new Element(3, 4);
-        Assertions.assertEquals(Couleur.ROUGE, el.getCouleur());
+        assertEquals(Couleur.ROUGE, el.getCouleur());
     }
 
     @Test
@@ -49,11 +49,11 @@ public class ElementTest {
 
         el = new Element(coord);
         el.setCoordonnees(coord2);
-        Assertions.assertEquals(coord2, el.getCoordonnees());
+        assertEquals(coord2, el.getCoordonnees());
 
         el = new Element(coord, Couleur.CYAN);
         el.setCoordonnees(coord2);
-        Assertions.assertEquals(coord2, el.getCoordonnees());
+        assertEquals(coord2, el.getCoordonnees());
     }
 
     @Test
@@ -63,11 +63,11 @@ public class ElementTest {
 
         el = new Element(coord);
         el.setCouleur(Couleur.JAUNE);
-        Assertions.assertEquals(Couleur.JAUNE, el.getCouleur());
+        assertEquals(Couleur.JAUNE, el.getCouleur());
 
         el = new Element(coord, Couleur.CYAN);
         el.setCouleur(Couleur.BLEU);
-        Assertions.assertEquals(Couleur.BLEU, el.getCouleur());
+        assertEquals(Couleur.BLEU, el.getCouleur());
     }
 
     @Test
@@ -76,10 +76,10 @@ public class ElementTest {
         Element el;
 
         el = new Element(coord, Couleur.VIOLET);
-        Assertions.assertEquals("(15, 2) - VIOLET",  el.toString());
+        assertEquals("(15, 2) - VIOLET",  el.toString());
 
         el = new Element(4, 9, Couleur.ORANGE);
-        Assertions.assertEquals("(4, 9) - ORANGE",  el.toString());
+        assertEquals("(4, 9) - ORANGE",  el.toString());
     }
 
     @Test
@@ -92,9 +92,9 @@ public class ElementTest {
         el3 = new Element(10, 6);
         el4 = new Element(6, 10);
 
-        Assertions.assertTrue(el1.equals(el1));
-        Assertions.assertTrue(el1.equals(el2));
-        Assertions.assertTrue(el1.equals(el3));
-        Assertions.assertFalse(el1.equals(el4));
+        assertTrue(el1.equals(el1));
+        assertTrue(el1.equals(el2));
+        assertTrue(el1.equals(el3));
+        assertFalse(el1.equals(el4));
     }
 }
