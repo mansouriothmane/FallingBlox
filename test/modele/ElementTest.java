@@ -97,4 +97,14 @@ public class ElementTest {
         assertTrue(el1.equals(el3));
         assertFalse(el1.equals(el4));
     }
+
+    @Test
+    void testDeplacerDe() {
+        Element el = new Element(2, 3);
+        el.deplacerDe(1, 1);
+        assertEquals(new Coordonnees(3, 4), el.getCoordonnees());
+
+        el.deplacerDe(-1, -1);
+        assertEquals(new Coordonnees(2, 3), el.getCoordonnees());
+    }
 }

@@ -42,6 +42,21 @@ public class Element {
         this.couleur = couleur;
     }
 
+    public void deplacerDe(int deltaX, int deltaY) {
+        coordonnees.setAbscisse(coordonnees.getAbscisse() + deltaX);
+        coordonnees.setOrdonnee(coordonnees.getOrdonnee() + deltaY);
+    }
+
+    public void tourner(boolean sensHoraire) {
+        //TODO: finir
+        deplacerDe(-coordonnees.getAbscisse(), -coordonnees.getOrdonnee());
+        int x = coordonnees.getAbscisse();
+        int y = coordonnees.getOrdonnee();
+        coordonnees.setAbscisse((int) Math.sqrt(x*x + y*y));
+        coordonnees.setOrdonnee(0);
+        deplacerDe(coordonnees.getAbscisse(), coordonnees.getOrdonnee());
+    }
+
     @Override
     public String toString() {
         return coordonnees.toString() + " - " + couleur.name();

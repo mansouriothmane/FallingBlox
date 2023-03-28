@@ -23,6 +23,19 @@ public abstract class Piece {
     }
 
     abstract protected void setElements(Coordonnees coordonnees, Couleur couleur);
+
+    public void deplacerDe(int deltaX, int deltaY) {
+        //TODO : Cas supérieur à 1
+        if (deltaY < 0) throw new IllegalStateException("Unexpected value: " + deltaY);
+        for(Element e : this.elements) {
+            e.deplacerDe(deltaX, deltaY);
+        }
+    }
+
+    public void tourner(boolean sensHoraire) {
+
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder(this.getClass().getSimpleName() + " :\n");
