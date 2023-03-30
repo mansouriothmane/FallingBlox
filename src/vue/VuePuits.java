@@ -1,15 +1,21 @@
 package fr.eseo.e3.poo.projet.blox.vue;
 
+import fr.eseo.e3.poo.projet.blox.controleur.PieceDeplacement;
 import fr.eseo.e3.poo.projet.blox.modele.Puits;
 import fr.eseo.e3.poo.projet.blox.modele.pieces.Piece;
 
 import javax.swing.*;
 import java.awt.*;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.time.Instant;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class VuePuits extends JPanel implements PropertyChangeListener {
+    private static final Logger logger = Logger.getLogger(PieceDeplacement.class.getName());
+
     public static final int TAILLE_PAR_DEFAUT = 20;
     private Puits puits;
     private int taille;
@@ -21,6 +27,9 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         setPreferredSize(new Dimension(400, 400));
         setBackground(Color.WHITE);
         puits.addPropertyChangeListener(this);
+        PieceDeplacement pieceDeplacement = new PieceDeplacement(this);
+        addKeyListener(pieceDeplacement);
+        setFocusable(true);
     }
 
     public VuePuits(Puits puits, int taille) {
@@ -29,6 +38,9 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         setPreferredSize(new Dimension(400, 400));
         setBackground(Color.WHITE);
         puits.addPropertyChangeListener(this);
+        PieceDeplacement pieceDeplacement = new PieceDeplacement(this);
+        addKeyListener(pieceDeplacement);
+        setFocusable(true);
     }
 
     public Puits getPuits() {
@@ -71,11 +83,11 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent event) {
         if (event.getPropertyName().equals(Puits.MODIFICATION_PIECE_ACTUELLE)) {
-            System.out.println("MODIFICATION_PIECE_ACTUELLE " + Instant.now());
+            logger.info("MODIFICATION_PIECE_ACTUELLE");
             setVuePiece(new VuePiece((Piece) event.getNewValue()));
         }
         if (event.getPropertyName().equals(Puits.MODIFICATION_PIECE_SUIVANTE)) {
-            System.out.println("MODIFICATION_PIECE_SUIVANTE " + Instant.now());
+            logger.info("MODIFICATION_PIECE_SUIVANTE");
             setVuePiece(new VuePiece((Piece) event.getNewValue()));
         }
     }
