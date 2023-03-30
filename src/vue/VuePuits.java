@@ -9,8 +9,6 @@ import java.awt.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.time.Instant;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class VuePuits extends JPanel implements PropertyChangeListener {

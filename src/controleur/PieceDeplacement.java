@@ -5,7 +5,6 @@ import fr.eseo.e3.poo.projet.blox.vue.VuePuits;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PieceDeplacement extends KeyAdapter {
@@ -26,10 +25,12 @@ public class PieceDeplacement extends KeyAdapter {
         int keyCode = e.getKeyCode();
         switch (keyCode) {
             case KeyEvent.VK_LEFT -> {
-                piece.deplacerDe(-1, 0);
+                if (e.isControlDown()) piece.tourner(true);
+                else piece.deplacerDe(-1, 0);
             }
             case KeyEvent.VK_RIGHT -> {
-                piece.deplacerDe(1, 0);
+                if (e.isControlDown()) piece.tourner(false);
+                else piece.deplacerDe(1, 0);
             }
             case KeyEvent.VK_UP -> {
                 piece.deplacerDe(0, -1);
