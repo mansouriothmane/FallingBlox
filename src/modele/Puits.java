@@ -6,8 +6,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class Puits {
-    public static int LARGEUR_PAR_DEFAUT = 400;
-    public static int PROFONDEUR_PAR_DEFAUT = 400;
+    public static int LARGEUR_PAR_DEFAUT = 20;
+    public static int PROFONDEUR_PAR_DEFAUT = 20;
     public static String MODIFICATION_PIECE_ACTUELLE = "MODIFICATION_PIECE_ACTUELLE";
     public static String MODIFICATION_PIECE_SUIVANTE = "MODIFICATION_PIECE_SUIVANTE";
     private int largeur;
@@ -15,6 +15,7 @@ public class Puits {
     private Piece pieceActuelle;
     private Piece pieceSuivante;
     private PropertyChangeSupport pcs;
+    private Tas tas;
 
     public Puits() {
         this.largeur = LARGEUR_PAR_DEFAUT;
@@ -38,13 +39,15 @@ public class Puits {
 
     public void setPieceSuivante(Piece nouvellePiece) {
         if (pieceSuivante != null) {
-            Piece tmp = pieceActuelle; // HARD COPY ?
+            Piece tmp = pieceActuelle;
             pieceActuelle = pieceSuivante;
+            //TODO: why?
             pieceActuelle.setPosition(largeur / 2, -4);
             pcs.firePropertyChange(MODIFICATION_PIECE_ACTUELLE, tmp, pieceActuelle);
         }
-        Piece tmp = pieceSuivante; // HARD COPY ?
+        Piece tmp = pieceSuivante;
         pieceSuivante = nouvellePiece;
+        pieceSuivante.setPuits(this);
         pcs.firePropertyChange(MODIFICATION_PIECE_SUIVANTE, tmp, pieceSuivante);
     }
 
@@ -54,6 +57,10 @@ public class Puits {
 
     public int getProfondeur() {
         return profondeur;
+    }
+
+    public Tas getTas() {
+        return tas;
     }
 
     public void setLargeur(int largeur) {

@@ -47,6 +47,10 @@ public class Element {
         coordonnees.setOrdonnee(coordonnees.getOrdonnee() + deltaY);
     }
 
+    public Coordonnees nouvellePosition(int deltaX, int deltaY) {
+        return new Coordonnees(coordonnees.getAbscisse() + deltaX, coordonnees.getOrdonnee() + deltaY);
+    }
+
     public void tourner(boolean sensHoraire) {
         int signe = sensHoraire ? 1 : -1;
         int ordonnee = coordonnees.getOrdonnee();

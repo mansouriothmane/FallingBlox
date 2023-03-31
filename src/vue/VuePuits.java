@@ -22,7 +22,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
     public VuePuits(Puits puits) {
         this.puits = puits;
         this.taille = TAILLE_PAR_DEFAUT;
-        setPreferredSize(new Dimension(400, 400));
+        setPreferredSize(new Dimension(500, 500));
         setBackground(Color.WHITE);
         puits.addPropertyChangeListener(this);
         PieceDeplacement pieceDeplacement = new PieceDeplacement(this);
@@ -33,7 +33,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
     public VuePuits(Puits puits, int taille) {
         this.puits = puits;
         this.taille = taille;
-        setPreferredSize(new Dimension(400, 400));
+        setPreferredSize(new Dimension(500, 500));
         setBackground(Color.WHITE);
         puits.addPropertyChangeListener(this);
         PieceDeplacement pieceDeplacement = new PieceDeplacement(this);
@@ -69,8 +69,8 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D)g.create();
         g2D.setColor(Color.LIGHT_GRAY);
-        for (int x = 0; x < getWidth(); x += taille) {
-            for (int y = 0; y < getHeight(); y += taille) {
+        for (int x = 0; x < puits.getLargeur() * taille; x += taille) {
+            for (int y = 0; y < puits.getProfondeur() * taille; y += taille) {
                 g2D.drawRect(x, y, taille, taille);
             }
         }
