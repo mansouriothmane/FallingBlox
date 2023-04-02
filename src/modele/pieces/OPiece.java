@@ -20,7 +20,5 @@ public class OPiece extends Piece{
     }
 
     @Override
-    public Piece tourner(boolean sensHoraire) {
-        return this;
-    }
+    public void tourner(boolean sensHoraire) {}
 }

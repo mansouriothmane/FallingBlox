@@ -20,6 +20,7 @@ public class Puits {
     public Puits() {
         this.largeur = LARGEUR_PAR_DEFAUT;
         this.profondeur = PROFONDEUR_PAR_DEFAUT;
+        this.tas = new Tas(this, 40, 4);
         this.pcs = new PropertyChangeSupport(this);
     }
 

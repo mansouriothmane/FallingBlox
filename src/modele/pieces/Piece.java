@@ -18,7 +18,6 @@ public abstract class Piece {
     public Piece(Coordonnees coordonnees, Couleur couleur){
         this.elements = new ArrayList<>();
         this.setElements(coordonnees, couleur);
-        this.puits = puits;
     }
 
     public List<Element> getElements() {
@@ -28,39 +27,62 @@ public abstract class Piece {
     abstract protected void setElements(Coordonnees coordonnees, Couleur couleur);
 
     public void deplacerDe(int deltaX, int deltaY) {
+        if (deltaY < 0) throw new IllegalStateException("Unexpected value: " + deltaX + deltaY);
+        if (abs(deltaX) > 1 || abs(deltaY) > 1) throw new IllegalStateException("Unexpected value: " + deltaX + deltaY);
         try {
             for (Element e : this.elements) {
-                Coordonnees nouvellePosition = e.nouvellePosition(deltaX, deltaY);
-                if (estUnePositionLegale(nouvellePosition)) {
-                    throw new BloxException("Illegal position : " + nouvellePosition, BloxException.BLOX_SORTIE_PUITS);
+                int posX = e.getCoordonnees().getAbscisse() + deltaX;
+                int posY = e.getCoordonnees().getOrdonnee() + deltaY;
+                if (posX < 0 || posY < 0 || posX >= puits.getLargeur() || posY >= puits.getProfondeur()) {
+                    throw new BloxException("La pièce sort du Puits", BloxException.BLOX_SORTIE_PUITS);
+                }
+                else if (puits.getTas().getElements()[posX][posY] != null) {
+                    throw new BloxException("Collision détectée", BloxException.BLOX_COLLISION);
                 }
             }
         } catch (BloxException ex) {
+            //TODO move outside
             throw new RuntimeException(ex);
         }
-        if (deltaY < 0) throw new IllegalStateException("Unexpected value: " + deltaY);
-        if (abs(deltaX) > 1 || abs(deltaY) > 1) throw new IllegalStateException("Unexpected value: " + deltaX);
         for(Element e : this.elements) {
             e.deplacerDe(deltaX, deltaY);
         }
     }
 
-    public Piece tourner(boolean sensHoraire) {
+    public void tourner(boolean sensHoraire) {
         int dx = elements.get(0).getCoordonnees().getAbscisse();
         int dy = elements.get(0).getCoordonnees().getOrdonnee();
+        try {
+            for (Element e : elements) {
+                int x = e.getCoordonnees().getAbscisse() - dx;
+                int y = e.getCoordonnees().getOrdonnee() - dy;
+                int newX = sensHoraire ? y : -y;
+                int newY = sensHoraire ? -x : x;
+                int posX = newX + dx;
+                int posY = newY + dy;
+                if (posX < 0 || posY < 0 || posX >= puits.getLargeur() || posY >= puits.getProfondeur()) {
+                    throw new BloxException("La pièce sort du Puits", BloxException.BLOX_SORTIE_PUITS);
+                }
+                else if (puits.getTas().getElements()[posX][posY] != null) {
+                    throw new BloxException("Collision détectée", BloxException.BLOX_COLLISION);
+                }
+            }
+        } catch (BloxException ex) {
+            //TODO move outside
+            throw new RuntimeException(ex);
+        }
         for(Element e : elements) {
             e.deplacerDe(-dx, -dy);
             e.tourner(sensHoraire);
             e.deplacerDe(dx, dy);
         }
-        return this;
     }
 
-    public boolean estUnePositionLegale(Coordonnees position) {
-        return position.getAbscisse() >= puits.getLargeur() ||
-                position.getOrdonnee() >= puits.getProfondeur() ||
-                position.getAbscisse() < 0 ||
-                position.getOrdonnee() < 0;
+    public boolean estDansPuits(Coordonnees position) {
+        return position.getAbscisse() < puits.getLargeur() &&
+                position.getOrdonnee() < puits.getProfondeur() &&
+                position.getAbscisse() >= 0 &&
+                position.getOrdonnee() >= 0;
     }
 
     @Override

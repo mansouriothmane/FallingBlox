@@ -18,6 +18,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
     private Puits puits;
     private int taille;
     private VuePiece vuePiece;
+    private VueTas vueTas;
 
     public VuePuits(Puits puits) {
         this.puits = puits;
@@ -28,6 +29,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         PieceDeplacement pieceDeplacement = new PieceDeplacement(this);
         addKeyListener(pieceDeplacement);
         setFocusable(true);
+        this.vueTas = new VueTas(this);
     }
 
     public VuePuits(Puits puits, int taille) {
@@ -39,6 +41,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         PieceDeplacement pieceDeplacement = new PieceDeplacement(this);
         addKeyListener(pieceDeplacement);
         setFocusable(true);
+        this.vueTas = new VueTas(this);
     }
 
     public Puits getPuits() {
@@ -74,7 +77,9 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
                 g2D.drawRect(x, y, taille, taille);
             }
         }
-        if (vuePiece != null) vuePiece.afficherPiece(g2D);
+        vueTas.afficher(g2D);
+        if (vuePiece != null)
+            vuePiece.afficherPiece(g2D);
         g2D.dispose();
     }
 
