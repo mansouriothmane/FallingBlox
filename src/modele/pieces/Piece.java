@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static java.lang.Math.abs;
+
 public abstract class Piece {
     private static final Logger logger = Logger.getLogger(PieceDeplacement.class.getName());
 
@@ -37,7 +39,7 @@ public abstract class Piece {
             throw new RuntimeException(ex);
         }
         if (deltaY < 0) throw new IllegalStateException("Unexpected value: " + deltaY);
-        if (deltaX > 1 || deltaY > 1) throw new IllegalStateException("Unexpected value: " + deltaX);
+        if (abs(deltaX) > 1 || abs(deltaY) > 1) throw new IllegalStateException("Unexpected value: " + deltaX);
         for(Element e : this.elements) {
             e.deplacerDe(deltaX, deltaY);
         }

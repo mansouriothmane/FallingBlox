@@ -4,6 +4,8 @@ import fr.eseo.e3.poo.projet.blox.modele.Coordonnees;
 import fr.eseo.e3.poo.projet.blox.modele.Couleur;
 import fr.eseo.e3.poo.projet.blox.modele.Element;
 import static org.junit.jupiter.api.Assertions.*;
+
+import fr.eseo.e3.poo.projet.blox.modele.Puits;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -51,11 +53,13 @@ public class OPieceTest {
 
     @Test
     void testDeplacerDe() {
+        Puits puits = new Puits();
         Piece piece = new OPiece(new Coordonnees(2, 3), Couleur.ROUGE);
-        piece.deplacerDe(2, 1);
-        assertEquals(new Coordonnees(4, 4), piece.getElements().get(0).getCoordonnees());
-        piece.deplacerDe(-3, 2);
-        assertEquals(new Coordonnees(1, 6), piece.getElements().get(0).getCoordonnees());
+        piece.setPuits(puits);
+        piece.deplacerDe(0, 1);
+        assertEquals(new Coordonnees(2, 4), piece.getElements().get(0).getCoordonnees());
+        piece.deplacerDe(-1, 1);
+        assertEquals(new Coordonnees(1, 5), piece.getElements().get(0).getCoordonnees());
         assertThrows(IllegalStateException.class, () -> piece.deplacerDe(2, -1));
     }
 }
