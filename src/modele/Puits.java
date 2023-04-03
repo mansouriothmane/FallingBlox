@@ -30,6 +30,21 @@ public class Puits {
         this.pcs = new PropertyChangeSupport(this);
     }
 
+    public void gravite() {
+        try {
+            // déplacer la pièce actuelle d’un carreau vers le bas
+            this.pieceActuelle.deplacerDe(0, 1);
+        }
+        catch (BloxException ex) {
+            gererCollision();
+        }
+    }
+
+    private void gererCollision() {
+        this.tas.ajouterElements(pieceActuelle);
+        setPieceSuivante(UsineDePiece.genererPiece());
+    }
+
     public Piece getPieceActuelle() {
         return pieceActuelle;
     }

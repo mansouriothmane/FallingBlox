@@ -1,4 +1,5 @@
 package fr.eseo.e3.poo.projet.blox.controleur;
+import fr.eseo.e3.poo.projet.blox.modele.BloxException;
 import fr.eseo.e3.poo.projet.blox.modele.Puits;
 import fr.eseo.e3.poo.projet.blox.modele.pieces.Piece;
 import fr.eseo.e3.poo.projet.blox.vue.VuePuits;
@@ -23,22 +24,25 @@ public class PieceDeplacement extends KeyAdapter {
         Piece piece = puits.getPieceSuivante();
         if (piece == null) return;
         int keyCode = e.getKeyCode();
-        switch (keyCode) {
-            case KeyEvent.VK_LEFT -> {
-                if (e.isControlDown()) piece.tourner(true);
-                else piece.deplacerDe(-1, 0);
-            }
-            case KeyEvent.VK_RIGHT -> {
-                if (e.isControlDown()) piece.tourner(false);
-                else piece.deplacerDe(1, 0);
-            }
-            case KeyEvent.VK_UP -> {
-                piece.deplacerDe(0, -1);
-            }
-            case KeyEvent.VK_DOWN -> {
-                piece.deplacerDe(0, 1);
+        try {
+            switch (keyCode) {
+                case KeyEvent.VK_LEFT -> {
+                    if (e.isControlDown()) piece.tourner(true);
+                    else piece.deplacerDe(-1, 0);
+                }
+                case KeyEvent.VK_RIGHT -> {
+                    if (e.isControlDown()) piece.tourner(false);
+                    else piece.deplacerDe(1, 0);
+                }
+                case KeyEvent.VK_UP -> {
+                    piece.deplacerDe(0, -1);
+                }
+                case KeyEvent.VK_DOWN -> {
+                    piece.deplacerDe(0, 1);
+                }
             }
         }
+        catch (BloxException ignored) {}
         // Repaint the VuePuits component
         vuePuits.repaint();
     }
