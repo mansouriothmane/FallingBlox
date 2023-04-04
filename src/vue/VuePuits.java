@@ -1,5 +1,6 @@
 package fr.eseo.e3.poo.projet.blox.vue;
 
+import fr.eseo.e3.poo.projet.blox.controleur.Gravite;
 import fr.eseo.e3.poo.projet.blox.controleur.PieceDeplacement;
 import fr.eseo.e3.poo.projet.blox.modele.Puits;
 import fr.eseo.e3.poo.projet.blox.modele.pieces.Piece;
@@ -11,6 +12,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.logging.Logger;
 
+import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
+
 public class VuePuits extends JPanel implements PropertyChangeListener {
     private static final Logger logger = Logger.getLogger(PieceDeplacement.class.getName());
 
@@ -19,6 +22,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
     private int taille;
     private VuePiece vuePiece;
     private VueTas vueTas;
+    private Gravite gravite;
 
     public VuePuits(Puits puits) {
         this.puits = puits;
@@ -30,6 +34,8 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         addKeyListener(pieceDeplacement);
         setFocusable(true);
         this.vueTas = new VueTas(this);
+        this.gravite = new Gravite(this);
+        addActionListener(gravite);
     }
 
     public VuePuits(Puits puits, int taille) {
@@ -42,6 +48,8 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         addKeyListener(pieceDeplacement);
         setFocusable(true);
         this.vueTas = new VueTas(this);
+        this.gravite = new Gravite(this);
+        addActionListener(gravite);
     }
 
     public Puits getPuits() {

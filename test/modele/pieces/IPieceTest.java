@@ -1,9 +1,6 @@
 package fr.eseo.e3.poo.projet.blox.modele.pieces;
 
-import fr.eseo.e3.poo.projet.blox.modele.Coordonnees;
-import fr.eseo.e3.poo.projet.blox.modele.Couleur;
-import fr.eseo.e3.poo.projet.blox.modele.Element;
-import fr.eseo.e3.poo.projet.blox.modele.Puits;
+import fr.eseo.e3.poo.projet.blox.modele.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -56,9 +53,13 @@ public class IPieceTest {
         Puits puits = new Puits();
         Piece piece = new IPiece(new Coordonnees(2, 3), Couleur.ROUGE);
         piece.setPuits(puits);
-        piece.deplacerDe(0, 1);
+        try {
+            piece.deplacerDe(0, 1);
+        } catch (BloxException ignored) {}
         assertEquals(new Coordonnees(2, 4), piece.getElements().get(0).getCoordonnees());
-        piece.deplacerDe(-1, 1);
+        try {
+            piece.deplacerDe(-1, 1);
+        } catch (BloxException ignored) {}
         assertEquals(new Coordonnees(1, 5), piece.getElements().get(0).getCoordonnees());
         assertThrows(IllegalStateException.class, () -> piece.deplacerDe(0, -1));
     }
