@@ -53,15 +53,15 @@ public class UsineDePiece {
 
     private static Piece newPiece(PieceType pieceType, Couleur couleur) {
         return switch (pieceType) {
-            case OPIECE -> new OPiece(new Coordonnees(2, 3), couleur);
-            case IPIECE -> new IPiece(new Coordonnees(2, 3), couleur);
+            case OPIECE -> new OPiece(new Coordonnees(1, 2), couleur);
+            case IPIECE -> new IPiece(new Coordonnees(1, 2), couleur);
         };
     }
 
     private static Piece newPieceDefaultColor(PieceType pieceType) {
         return switch (pieceType) {
-            case OPIECE -> new OPiece(new Coordonnees(2, 3), Couleur.ROUGE);
-            case IPIECE -> new IPiece(new Coordonnees(2, 3), Couleur.JAUNE);
+            case OPIECE -> new OPiece(new Coordonnees(1, 2), Couleur.ROUGE);
+            case IPIECE -> new IPiece(new Coordonnees(1, 2), Couleur.JAUNE);
         };
     }
 }

@@ -27,7 +27,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
     public VuePuits(Puits puits) {
         this.puits = puits;
         this.taille = TAILLE_PAR_DEFAUT;
-        setPreferredSize(new Dimension(500, 500));
+        setPreferredSize(new Dimension(200, 300));
         setBackground(Color.WHITE);
         puits.addPropertyChangeListener(this);
         PieceDeplacement pieceDeplacement = new PieceDeplacement(this);
@@ -41,7 +41,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
     public VuePuits(Puits puits, int taille) {
         this.puits = puits;
         this.taille = taille;
-        setPreferredSize(new Dimension(500, 500));
+        setPreferredSize(new Dimension(200, 300));
         setBackground(Color.WHITE);
         puits.addPropertyChangeListener(this);
         PieceDeplacement pieceDeplacement = new PieceDeplacement(this);
@@ -94,11 +94,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent event) {
         if (event.getPropertyName().equals(Puits.MODIFICATION_PIECE_ACTUELLE)) {
-            logger.info("MODIFICATION_PIECE_ACTUELLE");
             setVuePiece(new VuePiece((Piece) event.getNewValue()));
-        }
-        if (event.getPropertyName().equals(Puits.MODIFICATION_PIECE_SUIVANTE)) {
-            logger.info("MODIFICATION_PIECE_SUIVANTE");
         }
     }
 }

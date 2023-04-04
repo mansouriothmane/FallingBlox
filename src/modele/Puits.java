@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 
 public class Puits {
     private static final Logger logger = Logger.getLogger(Puits.class.getName());
-    public static int LARGEUR_PAR_DEFAUT = 20;
-    public static int PROFONDEUR_PAR_DEFAUT = 20;
+    public static int LARGEUR_PAR_DEFAUT = 10;
+    public static int PROFONDEUR_PAR_DEFAUT = 15;
     public static String MODIFICATION_PIECE_ACTUELLE = "MODIFICATION_PIECE_ACTUELLE";
     public static String MODIFICATION_PIECE_SUIVANTE = "MODIFICATION_PIECE_SUIVANTE";
     private int largeur;
@@ -22,7 +22,7 @@ public class Puits {
     public Puits() {
         this.largeur = LARGEUR_PAR_DEFAUT;
         this.profondeur = PROFONDEUR_PAR_DEFAUT;
-        this.tas = new Tas(this, 40, 4);
+        this.tas = new Tas(this, 10, 2);
         this.pcs = new PropertyChangeSupport(this);
     }
 

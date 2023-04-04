@@ -3,8 +3,10 @@ package fr.eseo.e3.poo.projet.blox.vue;
 import fr.eseo.e3.poo.projet.blox.modele.Tas;
 
 import java.awt.*;
+import java.util.logging.Logger;
 
 public class VueTas {
+    private static final Logger logger = Logger.getLogger(VueTas.class.getName());
     private final Tas tas;
     private static double MULTIPLIER_NUANCE = 0.5;
     private VuePuits vuePuits;
@@ -25,8 +27,8 @@ public class VueTas {
     }
 
     public void afficher(Graphics2D g2D) {
-        for (int i = 0; i < tas.getElements()[0].length; i++) {
-            for (int j = 0; j < tas.getElements().length; j++) {
+        for (int i = 0; i < tas.getElements().length; i++) {
+            for (int j = 0; j < tas.getElements()[0].length; j++) {
                 if (tas.getElements()[i][j] != null) {
                     g2D.setColor(nuance(tas.getElements()[i][j].getCouleur().getCouleurPourAffichage()));
                     g2D.fill3DRect(tas.getElements()[i][j].getCoordonnees().getAbscisse() * vuePuits.getTaille(),
