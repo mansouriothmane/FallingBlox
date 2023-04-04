@@ -91,7 +91,6 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         }
         if (event.getPropertyName().equals(Puits.MODIFICATION_PIECE_SUIVANTE)) {
             logger.info("MODIFICATION_PIECE_SUIVANTE");
-            setVuePiece(new VuePiece((Piece) event.getNewValue()));
         }
     }
 }

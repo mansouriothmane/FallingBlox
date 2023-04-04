@@ -20,8 +20,7 @@ public class PieceDeplacement extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        //TODO use getPieceActuelle
-        Piece piece = puits.getPieceSuivante();
+        Piece piece = puits.getPieceActuelle();
         if (piece == null) return;
         int keyCode = e.getKeyCode();
         try {

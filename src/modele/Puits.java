@@ -4,8 +4,10 @@ import fr.eseo.e3.poo.projet.blox.modele.pieces.Piece;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.logging.Logger;
 
 public class Puits {
+    private static final Logger logger = Logger.getLogger(Puits.class.getName());
     public static int LARGEUR_PAR_DEFAUT = 20;
     public static int PROFONDEUR_PAR_DEFAUT = 20;
     public static String MODIFICATION_PIECE_ACTUELLE = "MODIFICATION_PIECE_ACTUELLE";
@@ -54,11 +56,17 @@ public class Puits {
     }
 
     public void setPieceSuivante(Piece nouvellePiece) {
+        if (pieceActuelle == null && pieceSuivante == null) {
+            pieceActuelle = nouvellePiece;
+            pieceActuelle.setPuits(this);
+            pieceActuelle.setPosition(largeur / 2, 1);
+            pcs.firePropertyChange(MODIFICATION_PIECE_ACTUELLE, null, pieceActuelle);
+            return;
+        }
         if (pieceSuivante != null) {
             Piece tmp = pieceActuelle;
             pieceActuelle = pieceSuivante;
-            //TODO: why?
-            pieceActuelle.setPosition(largeur / 2, -4);
+            pieceActuelle.setPosition(largeur / 2, 1);
             pcs.firePropertyChange(MODIFICATION_PIECE_ACTUELLE, tmp, pieceActuelle);
         }
         Piece tmp = pieceSuivante;
