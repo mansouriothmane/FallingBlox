@@ -32,9 +32,9 @@ public abstract class Piece {
         for (Element e : this.elements) {
             int posX = e.getCoordonnees().getAbscisse() + deltaX;
             int posY = e.getCoordonnees().getOrdonnee() + deltaY;
-            if (posX < 0 || posY < 0 || posX >= puits.getLargeur() || posY >= puits.getProfondeur()) {
+            if (posX < 0 || posX >= puits.getLargeur() || posY >= puits.getProfondeur()) {
                 throw new BloxException("La pièce sort du Puits", BloxException.BLOX_SORTIE_PUITS);
-            } else if (puits.getTas().getElements()[posX][posY] != null) {
+            } else if (posY >= 0 && puits.getTas().getElements()[posX][posY] != null) {
                 throw new BloxException("Collision détectée", BloxException.BLOX_COLLISION);
             }
         }

@@ -56,17 +56,10 @@ public class Puits {
     }
 
     public void setPieceSuivante(Piece nouvellePiece) {
-        if (pieceActuelle == null && pieceSuivante == null) {
-            pieceActuelle = nouvellePiece;
-            pieceActuelle.setPuits(this);
-            pieceActuelle.setPosition(largeur / 2, 1);
-            pcs.firePropertyChange(MODIFICATION_PIECE_ACTUELLE, null, pieceActuelle);
-            return;
-        }
         if (pieceSuivante != null) {
             Piece tmp = pieceActuelle;
             pieceActuelle = pieceSuivante;
-            pieceActuelle.setPosition(largeur / 2, 1);
+            pieceActuelle.setPosition(largeur / 2, -4);
             pcs.firePropertyChange(MODIFICATION_PIECE_ACTUELLE, tmp, pieceActuelle);
         }
         Piece tmp = pieceSuivante;

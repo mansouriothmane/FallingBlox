@@ -36,6 +36,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         this.vueTas = new VueTas(this);
         this.gravite = new Gravite(this);
         addActionListener(gravite);
+        setVuePiece(new VuePiece(puits.getPieceActuelle()));
     }
 
     public VuePuits(Puits puits, int taille) {
@@ -50,6 +51,7 @@ public class VuePuits extends JPanel implements PropertyChangeListener {
         this.vueTas = new VueTas(this);
         this.gravite = new Gravite(this);
         addActionListener(gravite);
+        setVuePiece(new VuePiece(puits.getPieceActuelle()));
     }
 
     public Puits getPuits() {

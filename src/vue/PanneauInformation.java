@@ -17,6 +17,7 @@ public class PanneauInformation extends JPanel implements PropertyChangeListener
         this.puits = puits;
         this.puits.addPropertyChangeListener(this);
         setPreferredSize(new Dimension(70, 70));
+        setVuePiece(new VuePiece(puits.getPieceSuivante(), 15));
     }
 
     @Override

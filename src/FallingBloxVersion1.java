@@ -17,6 +17,7 @@ public class FallingBloxVersion1 {
 
         Puits puits = new Puits();
         puits.setPieceSuivante(UsineDePiece.genererPiece());
+        puits.setPieceSuivante(UsineDePiece.genererPiece());
 
         VuePuits vuePuits = new VuePuits(puits);
         frame.add(vuePuits, BorderLayout.CENTER);
