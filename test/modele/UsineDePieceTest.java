@@ -17,13 +17,13 @@ public class UsineDePieceTest {
         for (int i=0; i<nbCycles; i++) {
             piece = UsineDePiece.genererPiece();
             assertEquals(
-                    new OPiece(new Coordonnees(2, 3), Couleur.ROUGE).toString(),
+                    new OPiece(new Coordonnees(1, 2), Couleur.ROUGE).toString(),
                     piece.toString()
             );
 
             piece = UsineDePiece.genererPiece();
             assertEquals(
-                    new IPiece(new Coordonnees(2, 3), Couleur.JAUNE).toString(),
+                    new IPiece(new Coordonnees(1, 2), Couleur.JAUNE).toString(),
                     piece.toString());
         }
     }
