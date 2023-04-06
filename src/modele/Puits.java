@@ -39,11 +39,13 @@ public class Puits {
         }
         catch (BloxException ex) {
             gererCollision();
+            tas.displayBoard();
         }
     }
 
     private void gererCollision() {
         this.tas.ajouterElements(pieceActuelle);
+        this.tas.supprimerLignesCompletees();
         setPieceSuivante(UsineDePiece.genererPiece());
     }
 

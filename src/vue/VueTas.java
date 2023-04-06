@@ -27,8 +27,8 @@ public class VueTas {
     }
 
     public void afficher(Graphics2D g2D) {
-        for (int i = 0; i < tas.getElements().length; i++) {
-            for (int j = 0; j < tas.getElements()[0].length; j++) {
+        for (int j = 0; j < tas.getElements()[0].length; j++) {
+            for (int i = 0; i < tas.getElements().length; i++) {
                 if (tas.getElements()[i][j] != null) {
                     g2D.setColor(nuance(tas.getElements()[i][j].getCouleur().getCouleurPourAffichage()));
                     g2D.fill3DRect(tas.getElements()[i][j].getCoordonnees().getAbscisse() * vuePuits.getTaille(),
@@ -37,6 +37,10 @@ public class VueTas {
                 }
             }
         }
+    }
+
+    public Tas getTas() {
+        return tas;
     }
 
     public VuePuits getVuePuits() {
